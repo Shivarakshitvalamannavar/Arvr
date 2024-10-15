@@ -44,8 +44,6 @@ export function Ground(){
             depthToBlurRatioBias={0.25}
             debug={0}
             reflectorOffset={0.2}            
-            
-            
             />
         </mesh>
     )

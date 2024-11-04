@@ -4,3 +4,16 @@ html ,body, #root , canvas{
     margin:0;
     overflow: hidden;
 }
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    gap: 20px; /* Adds space between the color-control divs */
+    margin-top: 20px;
+  }
+  
+  .color-controls {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }

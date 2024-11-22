@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# Arvr Car Showroom
+In This AR/VR Car Showroom, customers can immerse themselves in a fully interactive 3D environment, where they can explore both the exterior and interior of cars in detail. Using intuitive AR/VR controls, users can customize the car’s features, such as selecting different colors, changing wheel styles, or adjusting other car specifications. The showroom provides a 360-degree view, allowing customers to examine the vehicle from any angle.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Features 
+Ability to load any car model for customization: Users can select and load any car model they want to customize within the showroom environment.
 
-## Available Scripts
+Customizable components: Users can customize each individual component of the car, such as the exterior color, wheels, and other features, allowing for precise and detailed personalization.
 
-In the project directory, you can run:
+## Installation 
+Follow these steps to set up Arvr Carshowroom locally:
 
-### `npm start`
+ 1. Clone the Repository
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Run the following command to clone the repository:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+git clone https://github.com/Shivarakshitvalamannavar/Arvr.git
+cd Arvr 
+```
+2. Install the Dependencies 
+```bash
+npm install
+```
+3. Start the Server 
+```bash
+npm start 
+```
+## How to use 
+Initial View: A Ford Mustang model will be displayed by default. You can use the scroll wheel to zoom in and out of the car to get a better view.
 
-### `npm test`
+Selecting Components: When you select a component, its color will change to orange, indicating that it's been selected. This helps you easily identify which part of the car you're customizing. You can then proceed with customizations according to your preferences.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Reset to Default: If you've made changes to a component and accidentally click on it again, don't worry! Simply click the "Reset to Default" button, and the component will revert back to its last customized state.
+## TechStack 
+Frontend:HTML,CSS,Javascript,React,THREE JS.
 
-### `npm run build`
+Rendering:Three.js,React Three Drei
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Screenshots 
+Initial 
+![image](https://github.com/user-attachments/assets/0eb43e8a-fd1a-4e1d-aa43-0dc54c0c38a3)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Mustang with some customisations 
+![image](https://github.com/user-attachments/assets/7f7b5067-4046-4cf7-8799-ba24de9a43ed)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+With a Different Model.
+![image](https://github.com/user-attachments/assets/d2ff2660-3347-4aab-b39f-0bcce34f1737)
 
-### `npm run eject`
+## last Note
+"Enjoy customizing your dream car! Experiment with different colors, components, and features to make it truly yours. Have fun exploring endless possibilities and creating a car that's as unique as you are!"
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

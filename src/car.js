@@ -1,124 +1,73 @@
-// import React, { useEffect } from "react";
-// import { useLoader } from "@react-three/fiber";
-// import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-// import { Mesh } from "three";
-
-// export function Car({ carColor, modelUrl }) {
-//   const gltf = useLoader(GLTFLoader, modelUrl || process.env.PUBLIC_URL + "models/car/car3.glb");
-
-//   useEffect(() => {
-//     if (gltf) {
-//       // Set up the scale and position of the model
-//       gltf.scene.scale.set(55, 55, 55);
-//       gltf.scene.position.set(0, 0, 0);
-
-//       // Traverse the model to find specific meshes and apply color
-//       gltf.scene.traverse((object) => {
-//         if (object instanceof Mesh) {
-//           object.castShadow = true;
-//           object.receiveShadow = true;
-
-//           // Change color only for the specific mesh (you can customize the mesh name if needed)
-//           object.material.color.setRGB(carColor[0], carColor[1], carColor[2]);
-//         }
-//       });
-//     }
-//   }, [gltf, carColor]);
-
-//   return gltf ? <primitive object={gltf.scene} /> : null;
-// }
-
-
-// Car.js
-// import React, { useEffect, useState } from "react";
-// import { useLoader } from "@react-three/fiber";
-// import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-// import { Mesh } from "three";
-
-// export function Car({ carColor, modelUrl, setComponentNames }) {
-//   const gltf = useLoader(GLTFLoader, modelUrl || process.env.PUBLIC_URL + "models/car/car3.glb");
-
-//   useEffect(() => {
-//     if (gltf) {
-//       // Set up the scale and position of the model
-//       console.log("Model loaded:", gltf);
-//       gltf.scene.scale.set(55, 55, 55);
-//       gltf.scene.position.set(0, 0, 0);
-
-//       const components = [];
-
-//       // Traverse the model to find specific meshes, apply color, and collect names
-//       gltf.scene.traverse((object) => {
-//         if (object instanceof Mesh) {
-//           object.castShadow = true;
-//           object.receiveShadow = true;
-
-//           // Change color for specific mesh
-//           object.material.color.setRGB(carColor[0], carColor[1], carColor[2]);
-
-//           // Store component name if it exists
-//           if (object.name) {
-//             components.push(object.name);
-//           }
-//         }
-//       });
-
-//       // Pass component names to the parent component
-//       setComponentNames(components);
-//     }
-//   }, [gltf, carColor, setComponentNames]);
-
-//   return gltf ? <primitive object={gltf.scene} /> : null;
-
+// Importing necessary React hooks and components
 import React, { useEffect, useState } from "react";
+
+// Importing the `useLoader` hook from React Three Fiber for loading 3D models
 import { useLoader } from "@react-three/fiber";
+
+// Importing the GLTFLoader to load GLTF/GLB model files
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+
+// Importing the Mesh class from Three.js for mesh-specific operations
 import { Mesh } from "three";
 
+// Defining the `Car` component with props for customization and interaction
 export function Car({ carColor, modelUrl, setComponentNames, onComponentSelect }) {
+  // Using `useLoader` to load a 3D car model (from a URL or default path)
   const gltf = useLoader(GLTFLoader, modelUrl || process.env.PUBLIC_URL + "models/car/car3.glb");
 
+  // Using `useEffect` to process the model after it's loaded
   useEffect(() => {
     if (gltf) {
+      // Log the loaded model for debugging purposes
       console.log("Model loaded:", gltf);
 
-      gltf.scene.scale.set(55, 55, 55);
-      gltf.scene.position.set(0, 0, 0);
+      // Set the scale and position of the loaded model's scene
+      gltf.scene.scale.set(55, 55, 55); // Scales the model up uniformly
+      gltf.scene.position.set(0, 0, 0); // Centers the model at the origin
 
+      // Initialize an array to hold the names of individual components in the model
       const components = [];
 
-      // Traverse to find all meshes and store component names
+      // Traverse through all objects in the model's scene
       gltf.scene.traverse((object) => {
+        // Check if the object is a Mesh (geometry with material)
         if (object instanceof Mesh) {
+          // Enable shadows for better visual quality
           object.castShadow = true;
           object.receiveShadow = true;
-          
+
+          // If the object has a name, add it to the components array
           if (object.name) {
             components.push(object.name);
           }
 
-          // Apply an event listener for selecting a component
-          object.userData = { name: object.name }; // Store the name in userData for reference
+          // Store the object's name in its `userData` for easy reference
+          object.userData = { name: object.name };
         }
       });
 
-      // Pass component names to the parent component
+      // Pass the collected component names to the parent component via a callback
       setComponentNames(components);
     }
-  }, [gltf, setComponentNames]);
+  }, [gltf, setComponentNames]); // Dependencies for the effect to re-run when `gltf` or `setComponentNames` changes
 
-  // Handle click on model parts
+  // Function to handle clicks on parts of the model
   const handleClick = (event) => {
+    // Check if there are any intersections (clicked objects)
     if (event.intersections.length > 0) {
+      // Get the first intersected object (closest to the camera)
       const selectedObject = event.intersections[0].object;
+
+      // Check if the selected object is a Mesh
       if (selectedObject instanceof Mesh) {
-        onComponentSelect(selectedObject); // Pass the selected component to parent
+        // Pass the selected component to the parent via a callback
+        onComponentSelect(selectedObject);
       }
     }
   };
 
+  // Render the 3D model (as a primitive) and attach the click handler
   return (
     <primitive object={gltf.scene} onClick={handleClick} />
   );
 }
-
